@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/levitate-lounge/static/css/main.ebe81c24.css",
+    "main.js": "/levitate-lounge/static/js/main.aab220f2.js",
+    "static/js/453.6c48607d.chunk.js": "/levitate-lounge/static/js/453.6c48607d.chunk.js",
+    "static/media/logo.PNG": "/levitate-lounge/static/media/logo.0b2565ea0eb37a606278.PNG",
+    "static/media/Lavitate-lounge-leaf.png": "/levitate-lounge/static/media/Lavitate-lounge-leaf.905af4a34e1c2007c413.png",
+    "index.html": "/levitate-lounge/index.html",
+    "main.ebe81c24.css.map": "/levitate-lounge/static/css/main.ebe81c24.css.map",
+    "main.aab220f2.js.map": "/levitate-lounge/static/js/main.aab220f2.js.map",
+    "453.6c48607d.chunk.js.map": "/levitate-lounge/static/js/453.6c48607d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ebe81c24.css",
+    "static/js/main.aab220f2.js"
+  ]
+}
