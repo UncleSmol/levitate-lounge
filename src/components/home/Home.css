@@ -1,0 +1,628 @@
+/* Add these at the beginning of your CSS file */
+
+.hero-section,
+.about-section,
+.disclaimer-section,
+.hours-section,
+.reviews-section {
+  visibility: hidden; 
+  margin-bottom: 0;
+}
+
+
+.review-card {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Home.css using index.css variables and classes for consistency */
+
+.home-container {
+  width: 100%;
+  color: var(--gray-dark);
+  font-family: var(--font-secondary);
+}
+
+/* Hero Section */
+.hero-section {
+  height: 80vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+
+/* Background image container */
+.hero-image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
+/* Facebook image as hero background */
+.hero-background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+/* When image has loaded successfully */
+.hero-background-image.loaded {
+  opacity: 0.9;
+}
+
+/* Fallback background if image fails to load */
+.hero-fallback-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.4) 40%,
+    rgba(0, 0, 0, 0.7) 70%,
+    rgba(0, 0, 0, 0.85)
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  max-width: 800px;
+  padding: var(--spacing-md);
+  z-index: 2;
+  position: relative;
+  color: var(--white);
+}
+
+.hero-title {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+  color: var(--accent-green);
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.9);
+  font-family: var(--font-primary);
+}
+
+.hero-subtitle {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-lg);
+  color: var(--gray-light);
+  text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.9);
+
+}
+
+.cta-container {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+/* Button styles using index.css button class as a base */
+.primary-button {
+  background: var(--accent-green);
+  color: var(--white);
+  box-shadow: var(--shadow-md);
+}
+
+.primary-button:hover {
+  background: var(--secondary-color);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.secondary-button {
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid var(--accent-green);
+  color: var(--accent-green);
+}
+
+.secondary-button:hover {
+  background: rgba(76, 175, 80, 0.2);
+  transform: translateY(-2px);
+}
+
+/* About Section */
+.about-section .container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.about-content {
+  flex: 2;
+}
+
+.about-content h2 {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--spacing-md);
+  color: var(--accent-green);
+  font-family: var(--font-primary);
+}
+
+.about-content p {
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-md);
+  color: var(--gray-light);
+}
+
+.about-link {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: transparent;
+  border: none;
+  color: var(--accent-green);
+  font-weight: 600;
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  border: 2px var(--dark) solid;
+}
+
+.about-link:hover {
+  text-decoration: underline;
+  color: var(--secondary-color);
+}
+
+.about-link:after {
+  content: "→";
+  margin-left: var(--spacing-xs);
+  transition: var(--transition-fast);
+}
+
+.about-link:hover:after {
+  margin-left: calc(var(--spacing-xs) + 5px);
+}
+
+.about-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Logo styling with transparent background */
+.logo-image {
+  max-width: 80%;
+  max-height: 250px;
+  filter: drop-shadow(0 0 10px rgba(76, 175, 80, 0.5));
+  transition: transform var(--transition-normal), filter var(--transition-normal);
+  border-radius: var(--radius-md);
+}
+
+.logo-image:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 15px rgba(76, 175, 80, 0.7));
+}
+
+/* ==== NEW SECTIONS STYLES ==== */
+
+/* Disclaimer Section */
+.disclaimer-card {
+  background-color: var(--dark);
+  border-left: 4px solid var(--accent-green);
+}
+
+.disclaimer-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.disclaimer-icon {
+  font-size: 2rem;
+  color: var(--accent-green);
+  margin-right: var(--spacing-sm);
+}
+
+.disclaimer-header h2 {
+  color: var(--accent-green);
+  margin: 0;
+  font-family: var(--font-primary);
+}
+
+.disclaimer-content p {
+  margin-bottom: var(--spacing-md);
+  line-height: var(--line-height-relaxed);
+  color: var(--gray-light);
+  text-align: left;
+}
+
+.disclaimer-content p:last-child {
+  margin-bottom: 0;
+}
+
+.disclaimer-content strong {
+  color: var(--accent-green);
+}
+
+/* Hours & Location Section */
+.hours-section {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.section-container {
+  display: flex;
+  gap: var(--spacing-lg);
+}
+
+.hours-card,
+.contact-card {
+  flex: 1;
+  background-color: var(--dark);
+}
+
+.hours-card h2,
+.contact-card h2 {
+  display: flex;
+  align-items: center;
+  color: var(--accent-green);
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-xl);
+  font-family: var(--font-primary);
+}
+
+.section-icon {
+  margin-right: var(--spacing-xs);
+  color: var(--accent-green);
+}
+
+.hours-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.hours-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--spacing-xs) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hours-list li:last-child {
+  border-bottom: none;
+}
+
+.hours-list .current-day {
+  color: var(--accent-green);
+  font-weight: bold;
+}
+
+.address-info {
+  font-style: normal;
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-md);
+}
+
+.address-info p {
+  margin-bottom: var(--spacing-sm);
+  display: flex;
+  align-items: center;
+}
+
+.contact-icon {
+  margin-right: var(--spacing-xs);
+  color: var(--accent-green);
+}
+
+.address-info a {
+  color: var(--accent-green);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.address-info a:hover {
+  text-decoration: underline;
+}
+
+.map-placeholder {
+  height: 200px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('https://maps.googleapis.com/maps/api/staticmap?center=Denver,CO&zoom=13&size=600x300&maptype=roadmap');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.get-directions {
+  position: absolute;
+  bottom: var(--spacing-sm);
+  right: var(--spacing-sm);
+  background: var(--accent-green);
+}
+
+/* Reviews Section */
+.reviews-section {
+  text-align: center;
+}
+
+.reviews-section h2 {
+  color: var(--accent-green);
+  margin-bottom: var(--spacing-lg);
+  font-size: var(--font-size-2xl);
+  font-family: var(--font-primary);
+}
+
+.reviews-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.review-card {
+  background-color: var(--dark);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.review-header {
+  margin-bottom: var(--spacing-sm);
+}
+
+.reviewer-name {
+  margin: 0;
+  margin-bottom: var(--spacing-xs);
+  color: var(--white);
+  font-size: var(--font-size-lg);
+  font-family: var(--font-primary);
+}
+
+.star-rating {
+  display: flex;
+  margin-bottom: var(--spacing-sm);
+}
+
+.star {
+  font-size: 1rem;
+  margin-right: 2px;
+}
+
+.star-filled {
+  color: var(--accent-green);
+}
+
+.star-half {
+  color: var(--accent-green);
+}
+
+.star-empty {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.review-text {
+  flex-grow: 1;
+  margin-bottom: var(--spacing-md);
+  line-height: var(--line-height-relaxed);
+  color: var(--gray-light);
+}
+
+.review-date {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  align-self: flex-end;
+}
+
+/* Scroll to Top Button */
+.scroll-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--primary-color);
+  color: white;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.scroll-to-top:hover {
+  transform: translateY(-3px);
+  background: var(--primary-dark);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: var(--font-size-xl);
+  }
+  
+  .hero-subtitle {
+    font-size: var(--font-size-lg);
+  }
+  
+  .cta-container {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    width: 100%;
+    max-width: 300px;
+    margin: var(--spacing-md) auto 0;
+  }
+  
+  .about-section .container {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .about-image {
+    order: -1;
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .logo-image {
+    max-width: 50%;
+  }
+  
+  /* Modified gradient for mobile to ensure text readability */
+  .hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0.8)
+    );
+  }
+
+  /* Section container for hours and contact becomes column on mobile */
+  .section-container {
+    flex-direction: column;
+  }
+  
+  /* Reviews container goes to single column */
+  .reviews-container {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Disclaimer section adjustments */
+  .disclaimer-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .disclaimer-icon {
+    margin-right: 0;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .scroll-to-top {
+    bottom: 1rem;
+    right: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    height: 70vh;
+  }
+  
+  .hero-title {
+    font-size: var(--font-size-lg);
+  }
+  
+  .hero-subtitle {
+    font-size: var(--font-size-base);
+  }
+  
+  /* Ensure hero content is visible */
+  .hero-content {
+    padding: var(--spacing-sm);
+  }
+  
+  /* Adjust overlay for very small screens */
+  .hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.6) 20%,
+      rgba(0, 0, 0, 0.8)
+    );
+  }
+
+  /* Smaller font sizes for small screens */
+  .disclaimer-header h2,
+  .hours-card h2,
+  .contact-card h2,
+  .reviews-section h2 {
+    font-size: var(--font-size-lg);
+  }
+
+  .disclaimer-content p,
+  .hours-list li,
+  .address-info p,
+  .review-text {
+    font-size: var(--font-size-sm);
+  }
+
+  /* More compact spacing */
+  .disclaimer-section,
+  .hours-section,
+  .reviews-section {
+    padding: var(--spacing-lg) var(--spacing-sm);
+  }
+  
+  /* Make buttons full width */
+  .button {
+    width: 100%;
+  }
+  
+  /* Smaller stars for ratings */
+  .star {
+    font-size: 0.9rem;
+  }
+  
+  /* Smaller map placeholder */
+  .map-placeholder {
+    height: 150px;
+  }
+}
+
+
+
+/* Special responsive fixes for very small devices */
+@media (max-width: 320px) {
+  .hero-title {
+    font-size: var(--font-size-base);
+  }
+  
+  .hero-subtitle {
+    font-size: var(--font-size-base);
+  }
+  
+  .section {
+    padding: var(--spacing-lg) 0;
+  }
+  
+  .card {
+    padding: var(--spacing-sm);
+  }
+}
+
+/* Force opacity on all elements in home component for extra insurance */
+.home-container * {
+  opacity: 1 !important;
+}
+
+/* Fix any potential scrollbar issues */
+.home-container::-webkit-scrollbar {
+  display: none;
+}

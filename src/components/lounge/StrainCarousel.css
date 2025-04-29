@@ -1,0 +1,260 @@
+.strain-carousel-container {
+  margin-bottom: var(--spacing-xl);
+  position: relative;
+  height: 100%;
+}
+
+.carousel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.carousel-header h3 {
+  font-family: var(--font-primary);
+  color: var(--accent-green);
+  margin: 0;
+}
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.carousel-control {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-circle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.carousel-control:hover:not(.disabled) {
+  background-color: var(--secondary-color);
+}
+
+.carousel-control.disabled {
+  background-color: var(--gray-light);
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.carousel-indicators {
+  display: flex;
+  gap: 8px;
+}
+
+.carousel-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--gray-light);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.carousel-indicator.active {
+  background-color: var(--primary-color);
+  transform: scale(1.2);
+}
+
+.strain-carousel {
+  position: relative;
+  overflow-x: auto;
+  overflow-y: visible; /* Changed from hidden to visible */
+  white-space: nowrap;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scroll-behavior: smooth;
+  padding: var(--spacing-md) 0;
+  cursor: grab;
+  perspective: 1000px;
+  scroll-snap-type: x mandatory;
+  height: 100%; /* Fixed height to accommodate card size */
+}
+
+.strain-carousel::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.strain-carousel.dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+}
+
+.carousel-track {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin: 0 auto;
+  transform-style: preserve-3d;
+  gap: var(--spacing-xl); /* Increased gap between cards */
+  padding: 0 calc(50% - 170px); /* Center the cards - adjusted for bank card width */
+}
+
+.carousel-card {
+  position: relative;
+  width: 340px; /* Bank card width */
+  height: auto; /* Bank card height */
+  flex-shrink: 0;
+  transform-origin: center center;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform;
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); /* Smoother easing */
+  scroll-snap-align: center;
+}
+
+.carousel-card.active {
+  z-index: 10;
+  transform: scale(1) translateZ(0);
+}
+
+.carousel-card:not(.active) {
+  opacity: 0.7;
+  filter: blur(1px);
+  transform: scale(0.9) translateZ(-50px);
+}
+
+/* Fix for strain card display in carousel */
+.carousel-card .strain-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.carousel-card .strain-card .strain-image {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.carousel-card .strain-card .strain-type {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 5;
+}
+
+.carousel-card .strain-card .strain-content {
+  padding: var(--spacing-sm);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.carousel-card .strain-card .strain-name {
+  margin-top: 0;
+  margin-bottom: 8px;
+  line-height: 1.2;
+  max-width: 100%;
+  white-space: normal;
+  font-size: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .carousel-card {
+    width: 300px;
+    height: auto;
+  }
+  
+  .carousel-track {
+    padding: 0 calc(50% - 150px);
+  }
+  
+  .strain-carousel {
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-indicators {
+    display: none;
+  }
+  
+  .carousel-controls {
+    justify-content: space-between;
+    width: 100%;
+    max-width: 120px;
+  }
+  
+  .carousel-card {
+    width: 280px;
+    height: auto;
+  }
+  
+  .carousel-track {
+    padding: 0 calc(50% - 140px);
+    gap: var(--spacing-lg);
+  }
+  
+  .strain-carousel {
+    padding: var(--spacing-sm) 0;
+    height: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .carousel-card {
+    width: 280px;
+    height: 450px;
+  }
+  
+  .carousel-track {
+    padding: 0 calc(50% - 140px);
+    gap: var(--spacing-md);
+  }
+  
+ 
+}
+
+@media (max-width: 480px) {
+  .carousel-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+  
+  .carousel-controls {
+    align-self: center;
+  }
+  
+  .carousel-card {
+    width: 260px;
+    height: 100%;
+  }
+  
+  .carousel-track {
+    /* padding: 0 calc(50% - 130px); */
+    gap: var(--spacing-md);
+  }
+  
+  .strain-carousel {
+    height: 100%;
+  }
+}
+
+/* Animation for new cards entering the carousel */
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: perspective(800px) rotateY(20deg) translateZ(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(800px) rotateY(0) translateZ(0);
+  }
+}
+
+.carousel-card:nth-child(1) {
+  animation: cardEnter 0.5s ease-out;
+}

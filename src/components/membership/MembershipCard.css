@@ -1,0 +1,517 @@
+.membership-card-container {
+  perspective: 1000px;
+  margin-bottom: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flip-instruction {
+  color: var(--gray-light);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-sm);
+  opacity: 0.8;
+  transition: opacity var(--transition-fast);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.flip-instruction:hover {
+  opacity: 1;
+}
+
+.flip-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.membership-card {
+  position: relative;
+  width: 320px; /* Slightly smaller width */
+  height: 480px; /* Slightly smaller height */
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  cursor: pointer;
+}
+
+.membership-card.flipped {
+  transform: rotateY(180deg);
+}
+
+.membership-card .front,
+.membership-card .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.membership-card .front {
+  background: var(--dark);
+  color: var(--white);
+  border: 2px solid var(--accent-green);
+}
+
+.membership-card .back {
+  background-color: var(--dark);
+  color: var(--white);
+  transform: rotateY(180deg);
+  border: 2px solid var(--accent-green);
+}
+
+.membership-card .front .card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 100%;
+  padding: var(--spacing-md);
+}
+
+.membership-card .front .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: var(--spacing-md);
+}
+
+.membership-card .front .card-logo {
+  border-radius: var(--radius-circle);
+  width: 40px; /* Smaller logo */
+  height: 40px; /* Smaller logo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.membership-card .front .card-logo .logo-icon {
+  font-size: 1.5rem; /* Smaller icon */
+  color: var(--accent-green);
+}
+
+.membership-card .front h3 {
+  font-size: var(--font-size-lg);
+  margin: 0;
+  color: var(--accent-green);
+  font-family: var(--font-primary);
+}
+
+.membership-card .front .membership-level {
+  font-size: 0.7rem; /* Smaller level */
+  color: var(--dark);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-pill);
+  background:linear-gradient( gold 30%, white);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.membership-card .front .card-member-info {
+  margin-bottom: var(--spacing-md);
+  margin-top: var(--spacing-sm);
+}
+
+.membership-card .front .member-name {
+  font-size: var(--font-size-xl);
+  font-weight: bold;
+  margin: 0;
+  color: var(--white);
+  font-family: var(--font-primary);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.membership-card .front .member-id {
+  font-size: var(--font-size-sm);
+  color: var(--gray-light);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.membership-card .front .cardWrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+
+.membership-card .front .card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.membership-card .front .points-container {
+  text-align: left;
+}
+
+.membership-card .front .points-label {
+  font-size: 0.7rem; /* Smaller label */
+  color: var(--gray-light);
+  margin-bottom: 0.25rem;
+}
+
+.membership-card .front .points-value {
+  font-size: var(--font-size-lg);
+  font-weight: bold;
+  color: var(--white);
+}
+
+.membership-card .front .card-barcode {
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.membership-card .front .card-barcode img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  border: 15px var(--white) solid;
+  box-sizing: border-box;
+}
+
+.membership-card .front .tap-to-flip {
+  font-size: 0.6rem; /* Smaller tap instruction */
+  color: #fff;
+  opacity: 0.6;
+  text-align: center;
+  margin-top: var(--spacing-sm);
+}
+
+
+.membership-card .back .card-content {
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.membership-card .back .card-back-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.membership-card .back h3 {
+  font-size: var(--font-size-lg);
+  margin: 0;
+  color: var(--accent-green);
+  font-family: var(--font-primary);
+}
+
+.membership-card .back .membership-level {
+  font-size: 0.7rem; /* Smaller level on back */
+  color: var(--dark);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-pill);
+  background:linear-gradient(gold 30%, white);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.membership-card .back .card-details-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+
+.membership-card .back .details-section h4 {
+  font-size: var(--font-size-md);
+  margin-bottom: var(--spacing-sm);
+  color: var(--accent-green);
+
+}
+
+.membership-card .back .detail-item {
+  font-size: var(--font-size-sm);
+  color: var(--gray-light);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.membership-card .back .detail-item .detail-icon {
+  width: 1rem;
+  height: 1rem;
+  color: var(--accent-green);
+}
+
+.membership-card .back .detail-item .detail-label {
+  font-weight: bold;
+  color: var(--white);
+}
+
+.membership-card .back .detail-item .detail-value {
+}
+
+.membership-card .back .benefits-section {
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.membership-card .back .benefits-section h4 {
+  font-size: var(--font-size-md);
+  margin-bottom: var(--spacing-sm);
+  color: var(--accent-green);
+  text-align: center;
+}
+
+.membership-card .back .benefits-list-compact {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.7rem; /* Smaller font in list */
+  color: var(--gray-light);
+}
+
+.membership-card .back .benefits-list-compact li {
+  margin-bottom: 0.5rem;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.membership-card .back .benefits-list-compact li:before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--accent-green);
+}
+
+.membership-card .back .card-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--gray-dark);
+}
+
+.membership-card .back .points-container {
+  text-align: center;
+}
+
+.membership-card .back .points-label {
+  font-size: 0.7rem; /* Smaller label on back */
+  color: var(--gray-light);
+  margin-bottom: 0.25rem;
+}
+
+.membership-card .back .points-value {
+  font-size: var(--font-size-lg);
+  font-weight: bold;
+  color: var(--white);
+}
+
+
+.strain-gallery {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  
+}
+
+.strain-gallery .gallery-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.strain-gallery .gallery-image {
+  flex: 1 0 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.strain-gallery .gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: var(--white);
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-circle);
+  cursor: pointer;
+  font-size: 1.2rem;
+  z-index: 1;
+  transition: background-color var(--transition-fast);
+}
+
+.strain-gallery .gallery-arrow:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.strain-gallery .prev {
+  left: var(--spacing-sm);
+}
+
+.strain-gallery .next {
+  right: var(--spacing-sm);
+}
+
+.strain-gallery .gallery-dots {
+  position: absolute;
+  bottom: var(--spacing-sm);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 1;
+}
+
+.strain-gallery .gallery-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: var(--radius-circle);
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.strain-gallery .gallery-dot.active {
+  background-color: var(--accent-green);
+}
+
+
+.strain-info {
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+}
+
+.strain-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-sm);
+}
+
+.strain-info .strain-name {
+  font-size: var(--font-size-xl);
+  margin: 0;
+  color: var(--accent-green);
+  font-family: var(--font-primary);
+}
+
+.strain-info .strain-rating {
+  display: flex;
+  color: #FFD700;
+  margin-top: 0.25rem;
+}
+
+.strain-info .strain-rating .star-filled {
+  margin-right: 0.2rem;
+}
+
+.strain-info .strain-rating .star-empty {
+  margin-right: 0.2rem;
+  opacity: 0.5;
+}
+
+
+.strain-info .strain-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-sm);
+  color: var(--gray-light);
+}
+.strain-info .thc-content{
+  color: var(--white)
+}
+
+.strain-info .strain-availability {
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-pill);
+  font-weight: bold;
+  font-size: var(--font-size-sm);
+  color: var(--white);
+}
+
+.strain-info .strain-availability.availability-high {
+  background-color: var(--success-green);
+}
+
+.strain-info .strain-availability.availability-medium {
+  background-color: #F39C12;
+}
+
+
+.strain-info .strain-description {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--gray-light);
+  margin-bottom: var(--spacing-md);
+}
+
+.strain-info .strain-price-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--font-size-lg);
+  font-weight: bold;
+  color: var(--white);
+}
+
+.strain-info .strain-price {
+  color: var(--accent-green);
+}
+
+.strain-info .price-per-gram {
+  font-size: var(--font-size-sm);
+  color: var(--gray-medium);
+}
+.strain-type {
+  position: absolute;
+  top: var(--spacing-sm);
+  left: var(--spacing-sm);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-pill);
+  color: var(--white);
+  font-size: var(--font-size-sm);
+  font-weight: bold;
+  z-index: 2;
+  text-transform: uppercase;
+  box-shadow: var(--shadow-sm);
+}
+
+.strain-type.indica {
+  background-color: #9B59B6;
+}
+
+.strain-type.sativa {
+  background-color: #F1C40F;
+}
+
+.strain-type.hybrid {
+  background-color: #3498DB;
+}

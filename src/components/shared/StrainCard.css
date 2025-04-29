@@ -1,0 +1,340 @@
+.strain-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: var(--dark);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  max-width: 340px; /* Approximate width of a bank card in pixels */
+  max-height: 415px; /* Approximate height of a bank card in pixels */
+  color: var(--white);
+  margin: 0 auto;
+}
+
+.strain-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Image Gallery Styles */
+.strain-gallery {
+  position: relative;
+  height: 300px; /* Reduced height */
+  width: 100%;
+  overflow: hidden;
+}
+
+.gallery-container {
+  display: flex;
+  transition: transform 0.5s ease;
+  height: 100%;
+  width: 100%;
+}
+
+.gallery-image {
+  min-width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-nav {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  z-index: 5;
+}
+
+.gallery-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.gallery-dot.active {
+  background-color: var(--white);
+  transform: scale(1.2);
+}
+
+.gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  cursor: pointer;
+  z-index: 5;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-size: 0.7rem;
+}
+
+.strain-gallery:hover .gallery-arrow {
+  opacity: 1;
+}
+
+.gallery-arrow.prev {
+  left: 5px;
+}
+
+.gallery-arrow.next {
+  right: 5px;
+}
+
+/* Legacy support for single image */
+.strain-image {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+}
+
+.strain-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.strain-card:hover .strain-image img {
+  transform: scale(1.05);
+}
+
+.strain-type {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 2px 6px;
+  width: 55px;
+  border-radius: var(--radius-pill);
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: white;
+  z-index: 5; /* Ensure it's above other elements */
+}
+
+.strain-type.indica {
+  background: linear-gradient(135deg, #6366F1, #4F46E5);
+}
+
+.strain-type.sativa {
+  background: linear-gradient(135deg, #F59E0B, #D97706);
+}
+
+.strain-type.hybrid {
+  background: linear-gradient(135deg, #10B981, #059669);
+}
+
+.strain-type.medical{
+  background: linear-gradient(135deg, #9110b9, #550596);
+}
+
+.strain-type.edible{
+  background: linear-gradient(135deg, #b9105f, #96053d);
+}
+
+/* Badge for featured or new strains */
+.strain-badge {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 2px 6px;
+  border-radius: var(--radius-pill);
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  z-index: 5;
+  background: var(--gradient-accent);
+  color: var(--dark);
+}
+
+.strain-content {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  position: relative;
+  z-index: 1;
+  height: calc(100% - 100px); /* Ensure content fits in remaining space */
+  overflow: hidden; /* Prevent content overflow */
+}
+
+.strain-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+  height: 30px;
+}
+
+.strain-name {
+  font-size: 1rem;
+  margin: 0 0 4px 0;
+  color: var(--white);
+  font-family: var(--font-primary);
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.strain-rating {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 0.7rem;
+}
+
+.stars {
+  display: flex;
+  gap: 1px;
+}
+
+.star-filled, .star-half, .star-empty {
+  font-size: 0.7rem;
+}
+
+.star-filled {
+  color: #FFD700;
+}
+
+.star-half {
+  color: #FFD700;
+}
+
+.star-empty {
+  color: var(--gray-light);
+}
+
+.rating-value {
+  font-weight: 600;
+  color: var(--gray-light);
+  font-size: 0.7rem;
+  margin-left: 2px;
+}
+
+.strain-potency {
+  display: flex;
+  gap: 6px;
+  font-size: 0.65rem;
+}
+
+.thc, .cbd {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 2px 4px;
+  border-radius: var(--radius-sm);
+}
+
+.strain-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 6px;
+  max-height: 22px; /* Limit height to prevent overflow */
+  overflow: hidden;
+}
+
+.effect-tag {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--gray-light);
+  padding: 2px 5px;
+  border-radius: var(--radius-pill);
+  font-size: 0.6rem;
+}
+
+.strain-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.price-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.price-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent-green);
+  line-height: 1;
+}
+
+.price-per-gram {
+  font-size: 0.6rem;
+  color: var(--gray-light);
+}
+
+.add-to-cart {
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-circle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-size: 0.8rem;
+}
+
+.add-to-cart:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  
+  .strain-gallery {
+    height: 90px;
+  }
+  
+  .strain-content {
+    height: calc(100% - 90px);
+  }
+  
+  .strain-name {
+    font-size: 0.9rem;
+  }
+  
+  .price-value {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+
+  
+  .strain-gallery {
+    height: 100px;
+  }
+  
+  .strain-content {
+    height: calc(100% - 85px);
+  }
+}
